@@ -1,0 +1,5 @@
+{
+  "block_transactions_config":{
+    "cache_ttl":60
+  }
+}

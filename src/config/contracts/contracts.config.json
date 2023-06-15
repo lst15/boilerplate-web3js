@@ -1,0 +1,11 @@
+{
+  "contracts_config":{
+    "list":{      
+      "mainnet_pancake_swap_router_v1":"0x05ff2b0db69458a0750badebc4f9e13add608c7f",
+      "mainnet_pancake_swap_router_v2":"0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "mainnet_pancake_swap_factory_v1":"0xbcfccbde45ce874adcb698cc183debcf17952812",
+      "mainnet_pancake_swap_factory_v2":"0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+      "mainnet_wrapped_ether":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    }
+  }
+}

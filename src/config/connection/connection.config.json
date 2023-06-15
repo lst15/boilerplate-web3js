@@ -1,0 +1,14 @@
+{
+    "connection_config": {
+        "list": {
+            "default": {
+                "ws": "wss://mainnet.infura.io/ws/v3/6a168940ef48465d9b5894c30d5d9ab7",
+                "http": "https://bsc.publicnode.com"
+            },
+            "free_comunity":{
+                "ws":"wss://127.0.0.1:8008",
+                "http":"https://bscrpc.com"
+            }
+        }
+    }
+}

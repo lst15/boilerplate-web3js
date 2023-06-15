@@ -1,0 +1,21 @@
+{
+  "transactions_config": {
+    "focus_list": {
+      "method_list": {},
+      "from_addresses_list": {
+        "default":"0xbc027da2ef2fad12f240321d9bfa0da60c8c2817",
+        "sandwich":"0x0000000000016a723d0d576df7dc79ec149ac760"
+      },
+      "to_addresses_list": {}
+    },
+    "ignore_list": {
+      "method_list": {},
+      "from_addresses_list": {},
+      "to_addresses_list": {}
+    },
+    "focus_gas_gwei_range": {
+      "min": 3000000000,
+      "max": 5000000000
+    }
+  }
+}
