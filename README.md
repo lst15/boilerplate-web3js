@@ -81,6 +81,20 @@ O módulo `FileSystemCacheModule` é responsável por lidar com o cache em um si
 
 O módulo `Web3Module` que encapsula uma instância do provedor Web3
 
+## Camadas de importância
+
+### Camada de Regras
+
+A camada de regras desempenha um papel crucial na aplicação. Ela é responsável por estabelecer e fazer cumprir as regras de negócio definidas para garantir que as operações realizadas sejam consistentes e seguras. As funções com o prefixo "need" na nomenclatura indicam que há uma regra específica a ser cumprida antes de executar determinada ação. Essas regras podem variar de validações de entrada de dados a permissões de acesso.
+
+### Consistência de Dados
+
+A consistência de dados é mantida por meio de validações e verificações em diferentes camadas da aplicação. Isso inclui validações de entrada de dados, validações de integridade, verificações de pré e pós-condições, entre outros. Essas validações são projetadas para garantir que os dados sejam consistentes e estejam em conformidade com as regras definidas.
+
+### Persistência de Dados
+
+A persistência de dados é garantida por meio de mecanismos de armazenamento adequados, como bancos de dados e sistemas de arquivos. A aplicação utiliza técnicas apropriadas de armazenamento para garantir que os dados sejam mantidos de forma segura e duradoura. Isso inclui o uso de transações para operações de gravação, backup regular de dados, técnicas de replicação para alta disponibilidade e recuperação em caso de falhas.
+
 ## Requisitos de Instalação
 
 Antes de executar a aplicação, certifique-se de que você possui os seguintes requisitos instalados:
