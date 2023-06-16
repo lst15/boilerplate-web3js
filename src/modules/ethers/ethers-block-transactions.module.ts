@@ -36,7 +36,7 @@ class EthersBlockTransactionsModule {
    * @param {EthersWebSocketProvider} provider - O provedor de conexão websocket.
    */
   public InitializeRecurrentTransactionsCapture(provider: EthersWebSocketProvider) {
-    provider.on("pending", (pending) => {
+    provider.on("pending", (pending: string) => {
       NeedBeATransactionHashRule(pending, "InitializeRecurrentTransactionsCapture");
       this._pendingTransactions.push(pending);
     });
@@ -49,7 +49,7 @@ class EthersBlockTransactionsModule {
   public InitializeRecurrentBlockCapture(provider: EthersWebSocketProvider) {
     let _lastMiningTime = Date.now();
 
-    provider.on("block", (block) => {
+    provider.on("block", (block: BlockNumber) => {
       NeedBeAPositiveNumberRule(block, "InitializeRecurrentBlockCapture");
       this._pendingBlock = block + 1
 
@@ -64,6 +64,7 @@ class EthersBlockTransactionsModule {
       )
 
       this._pendingTransactions = [];
+      _lastMiningTime = _minedTime;
     });
   }
 
