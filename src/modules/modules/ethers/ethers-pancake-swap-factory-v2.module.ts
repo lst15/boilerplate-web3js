@@ -1,13 +1,9 @@
-/**
- * A classe `PancakeSwapFactoryV2Contract` é responsável por lidar com o contrato ABI (Application Binary Interface)
- * da fábrica PancakeSwap V2 e suas funções específicas.
- * 
- * Ela fornece métodos para acessar o ABI, a interface, decodificar o bytecode de transação e executar as funções do contrato.
- */
 import { Contract, ethers } from "ethers";
-import { FileName, AbiInterface, ByteCode, ByteCodeDescription, Address, signerOrProvider } from "../../types";
-import { openFile } from "../../utils/load-file.util";
-import { NotBeNullRule } from "../../rules/not-be-null.rule";
+import { Interface, TransactionDescription } from "ethers/lib/utils";
+import { PancakeSwapFactoryV2Interface } from "../../interfaces/pancake-swap-factory-v2.interface";
+import { AbiInterface, Address, ByteCode, ByteCodeDescription, signerOrProvider } from "../../../types";
+import { openFile } from "../../../utils/load-file.util";
+import { NotBeNullRule } from "../../../rules/not-be-null.rule";
 
 /**
  * Interface para a requisição de criação de um contrato PancakeSwap Factory V2.
@@ -17,12 +13,12 @@ export interface EthersPancakeSwapFactoryV2ModuleRequest {
   signerOrProvider?:signerOrProvider
 }
 
-class EthersPancakeSwapFactoryV2Module {
-  private _abi: any;
-  private _AbiFileName: FileName;
-  private _interface: AbiInterface;
-  private _address: Address
-  private _contract: Contract;
+class EthersPancakeSwapFactoryV2Module implements PancakeSwapFactoryV2Interface {
+  _abi: any;
+  _AbiFileName: string;
+  _interface: Interface;
+  _address: string;
+  _contract: Contract;
 
   /**
    * Cria uma instância do objeto `PancakeSwapFactoryV2Contract`.
@@ -57,7 +53,7 @@ class EthersPancakeSwapFactoryV2Module {
   public get interface(): AbiInterface {
     return this._interface;
   }
-
+  
   /**
    * Decodifica o bytecode de uma transação PancakeSwap Factory V2 e retorna sua descrição.
    * @param bytecode O bytecode da transação a ser decodificado.
@@ -68,7 +64,7 @@ class EthersPancakeSwapFactoryV2Module {
     NotBeNullRule(bytecode, "PancakeSwapFactoryV2Module:decodeBytecode");
     return this._interface.parseTransaction({ data: bytecode });
   }
-
+  
   /**
    * Obtém o contrato PancakeSwap Factory V2.
    * @returns O contrato PancakeSwap Factory V2.
@@ -84,7 +80,5 @@ class EthersPancakeSwapFactoryV2Module {
   public get address(): Address {
     return this._address;
   }
-
+  
 }
-
-export default EthersPancakeSwapFactoryV2Module;

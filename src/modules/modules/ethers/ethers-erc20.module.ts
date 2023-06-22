@@ -1,7 +1,8 @@
-import { Contract, ethers } from "ethers";
-import { openFile } from "../../utils/load-file.util";
-import { NotBeNullRule } from "../../rules/not-be-null.rule";
-import { AbiInterface, Address, ByteCode, ByteCodeDescription, FileName, signerOrProvider } from "../../types";
+import { NotBeNullRule } from "../../../rules/not-be-null.rule";
+import { Address, signerOrProvider, FileName, AbiInterface, Contract, ByteCode, ByteCodeDescription } from "../../../types";
+import { openFile } from "../../../utils/load-file.util";
+import { Erc20Interface } from "../../interfaces/erc20.interface";
+import ethers from "ethers";
 
 /**
  * Interface para a requisição de criação de um contrato ERC20.
@@ -16,12 +17,12 @@ export interface EthersErc20ModuleRequest {
  * 
  * Ela lida com o carregamento e processamento do ABI, bem como com a decodificação do bytecode de transações relacionadas a esse contrato.
  */
-class EthersErc20Module {
-  private _abi: any;
-  private _AbiFileName: FileName;
-  private _interface: AbiInterface;
-  private _address: Address;
-  private _contract: Contract;
+class EthersErc20Module implements Erc20Interface{
+  _abi: any;
+  _AbiFileName: FileName;
+  _interface: AbiInterface;
+  _address: Address;
+  _contract: Contract;
 
   /**
    * Cria uma nova instância da classe `EthersErc20Module`.
@@ -48,10 +49,7 @@ class EthersErc20Module {
     return this._abi;
   }
 
-  /**
-   * Retorna a interface ethers.utils.Interface do contrato ERC-20.
-   * @returns A interface ethers.utils.Interface do contrato.
-   */
+
   public get interface(): AbiInterface {
     return this._interface;
   }

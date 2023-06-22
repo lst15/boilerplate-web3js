@@ -1,10 +1,10 @@
-/**
- * Módulo EthersWalletModule que lida com a criação e conexão de carteiras Ethereum.
- */
+import { JsonRpcProvider } from "@ethersproject/providers";
 import { ethers } from "ethers";
-import { HDNode, EthersJsonRpcProvider, Wallet } from "../../types";
+import { HDNode } from "ethers/lib/utils";
+import { WalletManagerInterface } from "../../interfaces/wallet-manager.interface";
+import { EthersJsonRpcProvider,Wallet } from "../../../types";
 
-class EthersWalletModule {
+class EthersWalletManagerModule implements WalletManagerInterface {
   /**
    * Obtém uma instância de carteira Ethereum com base no HDNode fornecido.
    * @param {HDNode} hdNode - O HDNode usado para criar a carteira.
@@ -56,6 +56,7 @@ class EthersWalletModule {
 
     return _connectionMulti;
   }
+
 }
 
-export default EthersWalletModule;
+export default EthersWalletManagerModule;

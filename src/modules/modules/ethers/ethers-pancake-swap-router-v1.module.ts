@@ -1,13 +1,9 @@
-/**
- * A classe `PancakeSwapRouterV1Module` é responsável por lidar com o contrato ABI (Application Binary Interface)
- * do roteador PancakeSwap V1.
- * 
- * Ela fornece métodos para acessar o ABI, a interface, decodificar o bytecode de transação e interagir com as funções do contrato.
- */
-import { ethers } from "ethers";
-import { FileName, AbiInterface, ByteCode, ByteCodeDescription, Address, Contract, signerOrProvider } from "../../types";
-import { openFile } from "../../utils/load-file.util";
-import { NotBeNullRule } from "../../rules/not-be-null.rule";
+import { Contract, ethers } from "ethers";
+import { Interface, TransactionDescription } from "ethers/lib/utils";
+import { PancakeSwapRouterV1Interface } from "../../interfaces/pancake-swap-router-v1.interface";
+import { AbiInterface, Address, ByteCode, ByteCodeDescription, signerOrProvider } from "../../../types";
+import { openFile } from "../../../utils/load-file.util";
+import { NotBeNullRule } from "../../../rules/not-be-null.rule";
 
 /**
  * Interface para a requisição de criação de um contrato PancakeSwap Router V1.
@@ -17,13 +13,14 @@ export interface EthersPancakeSwapRouterV1ModuleRequest {
   signerOrProvider?:signerOrProvider;
 }
 
-class EthersPancakeSwapRouterV1Module {
-  private _abi: any;
-  private _AbiFileName: FileName;
-  private _interface: AbiInterface;
-  private _address: Address;
-  private _contract: Contract;
-  
+
+class EthersPancakeSwapRouterV1Module implements PancakeSwapRouterV1Interface {
+  _abi: any;
+  _AbiFileName: string;
+  _interface: Interface;
+  _address: string;
+  _contract: Contract;
+
   /**
    * Cria uma instância do objeto `PancakeSwapRouterV1Module`.
    * Carrega o arquivo ABI correspondente e cria uma interface ethers com base nesse ABI.
@@ -41,6 +38,7 @@ class EthersPancakeSwapRouterV1Module {
       signerOrProvider
     )
   }
+
 
   /**
    * Obtém o ABI do contrato PancakeSwap Router V1.
@@ -84,7 +82,6 @@ class EthersPancakeSwapRouterV1Module {
   public get address(): Address {
     return this._address;
   }
-
 }
 
 export default EthersPancakeSwapRouterV1Module;

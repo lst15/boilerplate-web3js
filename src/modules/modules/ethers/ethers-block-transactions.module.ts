@@ -1,42 +1,41 @@
 /**
  * Módulo BlockTransactionsModule que lida com a captura de transações e blocos em tempo real.
  */
-import FileSystemCacheModule from "../file-system-cache.module";
-import { NeedBeAPositiveNumberRule } from "../../rules/need-be-a-positive-number.rule";
-import { NeedBeATransactionHashRule } from "../../rules/need-be-a-transaction-hash.rule";
-import { BlockNumber, TransactionHashList, EthersWebSocketProvider } from "../../types";
-import BlockTransactions from "../../config/block-transactions/block-transactions";
 
-interface EthersBlockTransactionsModuleRequest {
-  fileSystemCache: FileSystemCacheModule;
-  block_transactions_config: BlockTransactions;
+import { IBlockTransactions } from "../../../config/block-transactions/block-transactions";
+import { NeedBeAPositiveNumberRule } from "../../../rules/need-be-a-positive-number.rule";
+import { NeedBeATransactionHashRule } from "../../../rules/need-be-a-transaction-hash.rule";
+import { BlockNumber, TransactionHashList, EthersWebSocketProvider } from "../../../types";
+import { BlockTransactionsInterface } from "../../interfaces/block-transactions.interface";
+import { SystemCache } from "../../interfaces/system-cache.interface";
+
+export interface EthersBlockTransactionsModuleRequest {
+  fileSystemCache: SystemCache;
 }
 
-class EthersBlockTransactionsModule {
-  private _pendingBlock: BlockNumber;
-  private _pendingTransactions: TransactionHashList;
-  private _lastMiningDuration: number;
-  private _fileSystemCache: FileSystemCacheModule;
-  private _block_transactions_config: BlockTransactions;
+class EthersBlockTransactionsModule implements BlockTransactionsInterface {
+  _pendingBlock: BlockNumber;
+  _pendingTransactions: TransactionHashList;
+  _lastMiningDuration: number;
+  _fileSystemCache: SystemCache;  
 
   /**
    * Cria uma instância do módulo BlockTransactionsModule para capturar transações e blocos em tempo real.
    * @param {BlockTransactionsModuleRequest} options - As opções de configuração do módulo.
    */
-  constructor({ fileSystemCache, block_transactions_config }: EthersBlockTransactionsModuleRequest) {
+  constructor({ fileSystemCache }: EthersBlockTransactionsModuleRequest) {
     this._pendingBlock = 0;
     this._pendingTransactions = [];
     this._lastMiningDuration = 0;
-    this._fileSystemCache = fileSystemCache;
-    this, this._block_transactions_config = block_transactions_config;
+    this._fileSystemCache = fileSystemCache;    
   }
 
   /**
    * Inicializa a captura recorrente de transações utilizando um provedor de conexão websocket.
-   * @param {EthersWebSocketProvider} provider - O provedor de conexão websocket.
+   * @param {T} provider - O provedor de conexão websocket.
    */
-  public InitializeRecurrentTransactionsCapture(provider: EthersWebSocketProvider) {
-    provider.on("pending", (pending: string) => {
+  public InitializeRecurrentTransactionsCapture<T>(provider: T):void {
+    (provider as EthersWebSocketProvider).on("pending", (pending: string) => {
       NeedBeATransactionHashRule(pending, "InitializeRecurrentTransactionsCapture");
       this._pendingTransactions.push(pending);
     });
@@ -44,12 +43,12 @@ class EthersBlockTransactionsModule {
 
   /**
    * Inicializa a captura recorrente de blocos utilizando um provedor de conexão websocket.
-   * @param {EthersWebSocketProvider} provider - O provedor de conexão websocket.
+   * @param {T} provider - O provedor de conexão websocket.
    */
-  public InitializeRecurrentBlockCapture(provider: EthersWebSocketProvider) {
+  public InitializeRecurrentBlockCapture<T>(provider: T,cache_ttl:number) {
     let _lastMiningTime = Date.now();
 
-    provider.on("block", (block: BlockNumber) => {
+    (provider as EthersWebSocketProvider).on("block", (block: BlockNumber) => {
       NeedBeAPositiveNumberRule(block, "InitializeRecurrentBlockCapture");
       this._pendingBlock = block + 1
 
@@ -60,7 +59,7 @@ class EthersBlockTransactionsModule {
       this._fileSystemCache.setCache(
         this._pendingBlock.toString(),
         this._pendingTransactions,
-        this._block_transactions_config.config.cache_ttl
+        cache_ttl
       )
 
       this._pendingTransactions = [];

@@ -1,18 +1,18 @@
-/**
- * Classe EthersMnemonicModule que lida com operações relacionadas a mnemônicos (mnemonics) e HDNodes.
- */
+import { HDNode } from "ethers/lib/utils";
+import { MnemonicInterface } from "../../interfaces/mnemonic.interface";
 import { ethers } from "ethers";
-import { HDNode, TypeMnemonic } from "../../types";
+import { TypeMnemonic } from "../../../types";
+
 
 /**
  * Interface para a solicitação de criação do módulo EthersMnemonicModule.
  */
-interface EthersMnemonicModuleRequest {
+export interface EthersMnemonicModuleRequest {
   mnemonic: TypeMnemonic;
 }
 
-class EthersMnemonicModule {
-  private _hdNode: HDNode;
+class EthersMnemonicModule implements MnemonicInterface {
+  _hdNode: HDNode;
 
   /**
    * Cria uma instância do módulo EthersMnemonicModule com base no mnemônico fornecido.
@@ -62,7 +62,7 @@ class EthersMnemonicModule {
   public setMnemonic(mnemonic: TypeMnemonic) {
     this._hdNode = ethers.utils.HDNode.fromMnemonic(mnemonic);
   }
-
+  
   /**
    * Cria um mnemônico aleatório usando a função createRandom() do Wallet da biblioteca ethers.
    * @returns {TypeMnemonic} - O mnemônico criado.
@@ -71,6 +71,7 @@ class EthersMnemonicModule {
     const _mnemonic = ethers.Wallet.createRandom().mnemonic.phrase;
     return _mnemonic;
   }
+  
 }
 
 export default EthersMnemonicModule;

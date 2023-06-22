@@ -3,8 +3,9 @@
  */
 import { ethers } from "ethers";
 import { exec, execSync } from "child_process";
-import AnvilNotFound from "../../errors/anvil-not-found.error";
-import { Endpoint, EthersJsonRpcProvider, SystemPort, SystemQuery, TypeMnemonic, Process } from "../../types";
+import { FoundryAnvilForkInterface } from "../../interfaces/foundry-anvil-fork.interface";
+import { Endpoint, EthersJsonRpcProvider, Process, SystemPort, SystemQuery, TypeMnemonic } from "../../../types";
+import AnvilNotFound from "../../../errors/anvil-not-found.error";
 
 /**
  * Interface para a solicitação de criação do módulo EthersFoundryAnvilForkModule.
@@ -15,13 +16,13 @@ export interface EthersFoundryAnvilForkModuleRequest {
   endpoint: Endpoint;
 }
 
-class EthersFoundryAnvilForkModule {
-  private _systemQuery: SystemQuery;
-  private _systemPort: SystemPort;
-  private _mnemonic: TypeMnemonic;
-  private _endpoint: Endpoint;
-  private _provider: EthersJsonRpcProvider;
-  private _process: Process;
+class EthersFoundryAnvilForkModule implements FoundryAnvilForkInterface {
+  _systemQuery: SystemQuery;
+  _systemPort: SystemPort;
+  _mnemonic: TypeMnemonic;
+  _endpoint: Endpoint;
+  _provider: EthersJsonRpcProvider;
+  _process: Process;
 
   /**
    * Cria uma instância do módulo EthersFoundryAnvilForkModule.
@@ -46,8 +47,8 @@ class EthersFoundryAnvilForkModule {
    * Retorna o provedor Ethers utilizado para interagir com a rede forked.
    * @returns {EthersJsonRpcProvider} - O provedor Ethers.
    */
-  public get provider(): EthersJsonRpcProvider {
-    return this._provider;
+  public Provider<T>(): T {
+    return this._provider as T;
   }
 
   /**

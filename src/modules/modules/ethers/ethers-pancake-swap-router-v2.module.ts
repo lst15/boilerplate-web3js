@@ -1,13 +1,10 @@
-/**
- * A classe `PancakeSwapRouterV2Module` é responsável por lidar com o contrato ABI (Application Binary Interface)
- * do roteador PancakeSwap V2.
- * 
- * Ela fornece métodos para acessar o ABI, a interface, decodificar o bytecode de transação e interagir com as funções do contrato.
- */
-import { ethers } from "ethers";
-import { FileName, AbiInterface, ByteCode, ByteCodeDescription, Address, Contract, signerOrProvider } from "../../types";
-import { openFile } from "../../utils/load-file.util";
-import { NotBeNullRule } from "../../rules/not-be-null.rule";
+import { Contract, ethers } from "ethers";
+import { Interface, TransactionDescription } from "ethers/lib/utils";
+import { PancakeSwapRouterV2Interface } from "../../interfaces/pancake-swap-router-v2.interface";
+import { AbiInterface, Address, ByteCode, ByteCodeDescription, signerOrProvider } from "../../../types";
+import { openFile } from "../../../utils/load-file.util";
+import { NotBeNullRule } from "../../../rules/not-be-null.rule";
+
 
 /**
  * Interface para a requisição de criação de um contrato PancakeSwap Router V2.
@@ -17,13 +14,13 @@ export interface EthersPancakeSwapRouterV2ModuleRequest {
   signerOrProvider?:signerOrProvider;
 }
 
-class EthersPancakeSwapRouterV2Module {
-  private _abi: any;
-  private _AbiFileName: FileName;
-  private _interface: AbiInterface;
-  private _address: Address;
-  private _contract: Contract;
-  
+class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Interface{
+  _abi: any;
+  _AbiFileName: string;
+  _interface: Interface;
+  _address: string;
+  _contract: Contract;
+
   /**
    * Cria uma instância do objeto `PancakeSwapRouterV2Module`.
    * Carrega o arquivo ABI correspondente e cria uma interface ethers com base nesse ABI.

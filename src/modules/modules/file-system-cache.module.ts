@@ -1,21 +1,18 @@
-/**
- * A classe `FileSystemCacheModule` é responsável por lidar com o cache em um sistema de arquivos.
- * Ela utiliza a biblioteca `file-system-cache` para armazenar e recuperar dados em cache.
- */
+import { NotBeNullRule } from "../../rules/not-be-null.rule";
+import { CacheNameSpace } from "../../types";
+import { SystemCache } from "../interfaces/system-cache.interface";
 import Cache, { FileSystemCache } from "file-system-cache";
-import { NotBeNullRule } from "../rules/not-be-null.rule";
-import { CacheNameSpace } from "../types";
 
 /**
  * A interface `FileSystemCacheModuleRequest` define a estrutura da requisição para criar uma instância de `FileSystemCacheModule`.
  * Ela inclui um campo `namespace` que especifica o namespace do cache.
  */
-interface FileSystemCacheModuleRequest {
+export interface FileSystemCacheModuleRequest {
   namespace: CacheNameSpace;
 }
 
-class FileSystemCacheModule {
-  private _cache: FileSystemCache;
+class FileSystemCacheModule implements SystemCache {
+  systemCache: any;
 
   /**
    * Cria uma instância da classe `FileSystemCacheModule` com base na requisição fornecida.
@@ -26,7 +23,7 @@ class FileSystemCacheModule {
     // Verifica se o campo 'namespace' não é nulo ou indefinido
     NotBeNullRule(namespace, "FileSystemCacheModuleRequest");
 
-    this._cache = Cache({
+    this.systemCache = Cache({
       basePath: `${__dirname}/../cache/.${namespace}`,
       ns: namespace
     });
@@ -42,7 +39,7 @@ class FileSystemCacheModule {
     // Verifica se a chave não é nula ou indefinida
     NotBeNullRule(key, "getCache");
 
-    const value = await this._cache.get(key);
+    const value = await this.systemCache.get(key);
 
     return value;
   }
@@ -60,8 +57,9 @@ class FileSystemCacheModule {
     NotBeNullRule(value, "setCache");
     NotBeNullRule(ttl, "setCache");
 
-    await this._cache.set(key, value, ttl);
+    await this.systemCache.set(key, value, ttl);
   }
+  
 }
 
 export default FileSystemCacheModule;
