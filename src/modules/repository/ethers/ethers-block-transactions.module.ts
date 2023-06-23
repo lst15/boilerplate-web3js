@@ -10,7 +10,7 @@ import { BlockTransactionsInterface } from "../block-transactions.interface";
 import { SystemCache } from "../system-cache.interface";
 
 export interface EthersBlockTransactionsModuleRequest {
-  fileSystemCache: SystemCache;
+  systemCache: SystemCache;
 }
 
 class EthersBlockTransactionsModule implements BlockTransactionsInterface {
@@ -23,11 +23,11 @@ class EthersBlockTransactionsModule implements BlockTransactionsInterface {
    * Cria uma instância do módulo BlockTransactionsModule para capturar transações e blocos em tempo real.
    * @param {BlockTransactionsModuleRequest} options - As opções de configuração do módulo.
    */
-  constructor({ fileSystemCache }: EthersBlockTransactionsModuleRequest) {
+  constructor({ systemCache }: EthersBlockTransactionsModuleRequest) {
     this._pendingBlock = 0;
     this._pendingTransactions = [];
     this._lastMiningDuration = 0;
-    this._fileSystemCache = fileSystemCache;    
+    this._fileSystemCache = systemCache;    
   }
 
   /**
