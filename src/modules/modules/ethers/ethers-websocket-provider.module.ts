@@ -1,11 +1,11 @@
 import { WebsocketProvider } from "../../interfaces/websocket-provider.interface";
-import { Endpoint, Transaction } from "../../../types";
+import { EndpointType, TransactionType } from "../../../types";
 import {  ethers } from "ethers";
 import { EthersConnectionError } from "../../../errors/ethers-connection.error";
 import { NeedBeATransactionHashRule } from "../../../rules/need-be-a-transaction-hash.rule";
 
 export interface EthersWebsocketModuleRequest {
-  endpoint: Endpoint;
+  endpoint: EndpointType;
 }
 
 class EthersWebsocketProviderModule implements WebsocketProvider {
@@ -32,7 +32,7 @@ class EthersWebsocketProviderModule implements WebsocketProvider {
     return this._provider;
   }
 
-  public async getTransactionByHash(hash: string): Promise<Transaction> {
+  public async getTransactionByHash(hash: string): Promise<TransactionType> {
     NeedBeATransactionHashRule(hash,"getTransactionByHash");
     return this._provider.getTransaction(hash);
   }

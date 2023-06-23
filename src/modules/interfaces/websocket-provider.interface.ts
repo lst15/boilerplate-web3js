@@ -1,4 +1,4 @@
-import { Transaction } from "../../types";
+import { TransactionType } from "../../types";
 
 export interface WebsocketProvider{
   _provider:any;
@@ -9,6 +9,6 @@ export interface WebsocketProvider{
    */
   getProvider<T>():T;
 
-  getTransactionByHash(hash: string): Promise<Transaction> 
+  getTransactionByHash(hash: string): Promise<TransactionType> 
 
 }

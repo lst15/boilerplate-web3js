@@ -1,7 +1,7 @@
 import { Contract, ethers } from "ethers";
 import { Interface, TransactionDescription } from "ethers/lib/utils";
 import { PancakeSwapRouterV2Interface } from "../../interfaces/pancake-swap-router-v2.interface";
-import { AbiInterface, Address, ByteCode, ByteCodeDescription, signerOrProvider } from "../../../types";
+import { AbiInterfaceType, AddressType, ByteCodeType, ByteCodeDescriptionType, signerOrProviderType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
 import { NotBeNullRule } from "../../../rules/not-be-null.rule";
 
@@ -10,8 +10,8 @@ import { NotBeNullRule } from "../../../rules/not-be-null.rule";
  * Interface para a requisição de criação de um contrato PancakeSwap Router V2.
  */
 export interface EthersPancakeSwapRouterV2ModuleRequest {
-  address: Address;
-  signerOrProvider?:signerOrProvider;
+  address: AddressType;
+  signerOrProvider?:signerOrProviderType;
 }
 
 class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Interface{
@@ -51,7 +51,7 @@ class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Interface{
    * Obtém a interface ethers do contrato PancakeSwap Router V2.
    * @returns A interface ethers do contrato.
    */
-  public get interface(): AbiInterface {
+  public get interface(): AbiInterfaceType {
     return this._interface;
   }
 
@@ -61,7 +61,7 @@ class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Interface{
    * @returns A descrição da transação decodificada.
    * @throws Um erro se o bytecode fornecido for nulo ou indefinido.
    */
-  public decodeBytecode(bytecode: ByteCode): ByteCodeDescription {
+  public decodeBytecode(bytecode: ByteCodeType): ByteCodeDescriptionType {
     NotBeNullRule(bytecode, "PancakeSwapRouterV2Module:decodeBytecode");
     return this._interface.parseTransaction({ data: bytecode });
   }
@@ -78,7 +78,7 @@ class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Interface{
    * Obtém o endereço do contrato PancakeSwap Router V2.
    * @returns O endereço do contrato PancakeSwap Router V2.
    */
-  public get address(): Address {
+  public get address(): AddressType {
     return this._address;
   }
 

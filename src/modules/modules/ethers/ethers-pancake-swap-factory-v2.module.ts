@@ -1,7 +1,7 @@
 import { Contract, ethers } from "ethers";
 import { Interface, TransactionDescription } from "ethers/lib/utils";
 import { PancakeSwapFactoryV2Interface } from "../../interfaces/pancake-swap-factory-v2.interface";
-import { AbiInterface, Address, ByteCode, ByteCodeDescription, signerOrProvider } from "../../../types";
+import { AbiInterfaceType, AddressType, ByteCodeType, ByteCodeDescriptionType, signerOrProviderType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
 import { NotBeNullRule } from "../../../rules/not-be-null.rule";
 
@@ -9,8 +9,8 @@ import { NotBeNullRule } from "../../../rules/not-be-null.rule";
  * Interface para a requisição de criação de um contrato PancakeSwap Factory V2.
  */
 export interface EthersPancakeSwapFactoryV2ModuleRequest {
-  address: Address;
-  signerOrProvider?:signerOrProvider
+  address: AddressType;
+  signerOrProvider?:signerOrProviderType
 }
 
 class EthersPancakeSwapFactoryV2Module implements PancakeSwapFactoryV2Interface {
@@ -50,7 +50,7 @@ class EthersPancakeSwapFactoryV2Module implements PancakeSwapFactoryV2Interface 
    * Obtém a interface ethers do contrato PancakeSwap Factory V2.
    * @returns A interface ethers do contrato.
    */
-  public get interface(): AbiInterface {
+  public get interface(): AbiInterfaceType {
     return this._interface;
   }
   
@@ -60,7 +60,7 @@ class EthersPancakeSwapFactoryV2Module implements PancakeSwapFactoryV2Interface 
    * @returns A descrição da transação decodificada.
    * @throws Um erro se o bytecode fornecido for nulo ou indefinido.
    */
-  public decodeBytecode(bytecode: ByteCode): ByteCodeDescription {
+  public decodeBytecode(bytecode: ByteCodeType): ByteCodeDescriptionType {
     NotBeNullRule(bytecode, "PancakeSwapFactoryV2Module:decodeBytecode");
     return this._interface.parseTransaction({ data: bytecode });
   }
@@ -77,7 +77,7 @@ class EthersPancakeSwapFactoryV2Module implements PancakeSwapFactoryV2Interface 
    * Obtém o endereço do contrato PancakeSwap Factory V2.
    * @returns O endereço do contrato PancakeSwap Factory V2.
    */
-  public get address(): Address {
+  public get address(): AddressType {
     return this._address;
   }
   

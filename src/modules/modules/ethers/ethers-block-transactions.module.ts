@@ -5,7 +5,7 @@
 import { IBlockTransactions } from "../../../config/block-transactions/block-transactions";
 import { NeedBeAPositiveNumberRule } from "../../../rules/need-be-a-positive-number.rule";
 import { NeedBeATransactionHashRule } from "../../../rules/need-be-a-transaction-hash.rule";
-import { BlockNumber, TransactionHashList, EthersWebSocketProvider } from "../../../types";
+import { BlockNumberType, TransactionHashListType, EthersWebSocketProviderType } from "../../../types";
 import { BlockTransactionsInterface } from "../../interfaces/block-transactions.interface";
 import { SystemCache } from "../../interfaces/system-cache.interface";
 
@@ -14,8 +14,8 @@ export interface EthersBlockTransactionsModuleRequest {
 }
 
 class EthersBlockTransactionsModule implements BlockTransactionsInterface {
-  _pendingBlock: BlockNumber;
-  _pendingTransactions: TransactionHashList;
+  _pendingBlock: BlockNumberType;
+  _pendingTransactions: TransactionHashListType;
   _lastMiningDuration: number;
   _fileSystemCache: SystemCache;  
 
@@ -35,7 +35,7 @@ class EthersBlockTransactionsModule implements BlockTransactionsInterface {
    * @param {T} provider - O provedor de conexão websocket.
    */
   public InitializeRecurrentTransactionsCapture<T>(provider: T):void {
-    (provider as EthersWebSocketProvider).on("pending", (pending: string) => {
+    (provider as EthersWebSocketProviderType).on("pending", (pending: string) => {
       NeedBeATransactionHashRule(pending, "InitializeRecurrentTransactionsCapture");
       this._pendingTransactions.push(pending);
     });
@@ -48,7 +48,7 @@ class EthersBlockTransactionsModule implements BlockTransactionsInterface {
   public InitializeRecurrentBlockCapture<T>(provider: T,cache_ttl:number) {
     let _lastMiningTime = Date.now();
 
-    (provider as EthersWebSocketProvider).on("block", (block: BlockNumber) => {
+    (provider as EthersWebSocketProviderType).on("block", (block: BlockNumberType) => {
       NeedBeAPositiveNumberRule(block, "InitializeRecurrentBlockCapture");
       this._pendingBlock = block + 1
 
@@ -79,7 +79,7 @@ class EthersBlockTransactionsModule implements BlockTransactionsInterface {
    * Obtém o número do bloco atual.
    * @returns {BlockNumber} O número do bloco atual.
    */
-  public get CurrentBlock(): BlockNumber {
+  public get CurrentBlock(): BlockNumberType {
     return this._pendingBlock;
   }
 
@@ -88,7 +88,7 @@ class EthersBlockTransactionsModule implements BlockTransactionsInterface {
    * @param {BlockNumber} block - O número do bloco anterior.
    * @returns {Promise<TransactionHashList>} A lista de hashes de transações do bloco anterior.
    */
-  public async getLastBlock(block: BlockNumber): Promise<TransactionHashList> {
+  public async getLastBlock(block: BlockNumberType): Promise<TransactionHashListType> {
     const _transactions = await this._fileSystemCache.getCache(block.toString());
     // Se o valor retornado for indefinido, retorna uma lista vazia
     return _transactions === undefined ? [] : _transactions;

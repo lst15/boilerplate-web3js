@@ -1,5 +1,5 @@
 import { NotBeNullRule } from "../../rules/not-be-null.rule";
-import { CacheNameSpace } from "../../types";
+import { CacheNameSpaceType } from "../../types";
 import { SystemCache } from "../interfaces/system-cache.interface";
 import Cache, { FileSystemCache } from "file-system-cache";
 
@@ -8,7 +8,7 @@ import Cache, { FileSystemCache } from "file-system-cache";
  * Ela inclui um campo `namespace` que especifica o namespace do cache.
  */
 export interface FileSystemCacheModuleRequest {
-  namespace: CacheNameSpace;
+  namespace: CacheNameSpaceType;
 }
 
 class FileSystemCacheModule implements SystemCache {

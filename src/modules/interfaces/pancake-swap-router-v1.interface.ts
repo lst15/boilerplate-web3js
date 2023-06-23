@@ -1,11 +1,11 @@
-import { FileName, AbiInterface, Address, ByteCode, ByteCodeDescription,Contract } from "../../types";
+import { FileNameType, AbiInterfaceType, AddressType, ByteCodeType, ByteCodeDescriptionType,ContractType } from "../../types";
 
 export interface PancakeSwapRouterV1Interface {
   _abi: any;
-  _AbiFileName: FileName;
-  _interface: AbiInterface;
-  _address: Address
-  _contract: Contract; 
+  _AbiFileName: FileNameType;
+  _interface: AbiInterfaceType;
+  _address: AddressType
+  _contract: ContractType; 
   
   /**
    * Obtém o ABI do contrato PancakeSwap Factory V2.
@@ -17,7 +17,7 @@ export interface PancakeSwapRouterV1Interface {
    * Obtém a interface ethers do contrato PancakeSwap Factory V2.
    * @returns A interface ethers do contrato.
    */  
-  get interface(): AbiInterface
+  get interface(): AbiInterfaceType
 
   /**
    * Decodifica o bytecode de uma transação PancakeSwap Factory V2 e retorna sua descrição.
@@ -25,18 +25,18 @@ export interface PancakeSwapRouterV1Interface {
    * @returns A descrição da transação decodificada.
    * @throws Um erro se o bytecode fornecido for nulo ou indefinido.
    */  
-  decodeBytecode(bytecode: ByteCode): ByteCodeDescription;
+  decodeBytecode(bytecode: ByteCodeType): ByteCodeDescriptionType;
 
   /**
    * Obtém o contrato PancakeSwap Factory V2.
    * @returns O contrato PancakeSwap Factory V2.
    */
-  get contract(): Contract
+  get contract(): ContractType
 
   /**
    * Obtém o endereço do contrato PancakeSwap Factory V2.
    * @returns O endereço do contrato PancakeSwap Factory V2.
    */  
-  get address(): Address
+  get address(): AddressType
 
 }
