@@ -1,5 +1,5 @@
 import DataRuleError from "../errors/data-rule.error";
-import { Caller, Gwei } from "../types";
+import { CallerType, GweiType } from "../types";
 
 /**
  * Verifica se o valor fornecido é um valor ERC20 válido em Gwei.
@@ -10,8 +10,8 @@ import { Caller, Gwei } from "../types";
  */
 export function NeedBeErc20GweiRule
 (
-  gwei:Gwei,
-  caller:Caller
+  gwei:GweiType,
+  caller:CallerType
 ): boolean{
   const _reference = `NeedBeErc20GweiRule:${caller}: value is ${gwei}`
   const _regex = /^\d+$/

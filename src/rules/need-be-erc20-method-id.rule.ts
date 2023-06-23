@@ -1,5 +1,5 @@
 import DataRuleError from "../errors/data-rule.error";
-import { Caller, MethodId } from "../types";
+import { CallerType, MethodIdType } from "../types";
 
 /**
  * Verifica se o ID do método fornecido é um ID de método ERC20 válido.
@@ -10,8 +10,8 @@ import { Caller, MethodId } from "../types";
  */
 export function NeedBeErc20MethodIdRule
 (
-  methodId:MethodId,
-  caller:Caller
+  methodId:MethodIdType,
+  caller:CallerType
 ): boolean{
   const _reference = `NeedBeErc20MethodIdRule:${caller}: value is ${methodId}`
   const _regex = /^0x[0-9a-fA-F]{8}$/

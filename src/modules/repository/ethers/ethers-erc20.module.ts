@@ -1,15 +1,15 @@
 import { NotBeNullRule } from "../../../rules/not-be-null.rule";
-import { Address, signerOrProvider, FileName, AbiInterface, Contract, ByteCode, ByteCodeDescription } from "../../../types";
+import { AddressType, signerOrProviderType, FileNameType, AbiInterfaceType, ContractType, ByteCodeType, ByteCodeDescriptionType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
-import { Erc20Interface } from "../../interfaces/erc20.interface";
 import ethers from "ethers";
+import { Erc20Interface } from "../erc20.interface";
 
 /**
  * Interface para a requisição de criação de um contrato ERC20.
  */
 export interface EthersErc20ModuleRequest {
-  address: Address;
-  signerOrProvider?:signerOrProvider;
+  address: AddressType;
+  signerOrProvider?:signerOrProviderType;
 }
 
 /**
@@ -19,10 +19,10 @@ export interface EthersErc20ModuleRequest {
  */
 class EthersErc20Module implements Erc20Interface{
   _abi: any;
-  _AbiFileName: FileName;
-  _interface: AbiInterface;
-  _address: Address;
-  _contract: Contract;
+  _AbiFileName: FileNameType;
+  _interface: AbiInterfaceType;
+  _address: AddressType;
+  _contract: ContractType;
 
   /**
    * Cria uma nova instância da classe `EthersErc20Module`.
@@ -50,7 +50,7 @@ class EthersErc20Module implements Erc20Interface{
   }
 
 
-  public get interface(): AbiInterface {
+  public get interface(): AbiInterfaceType {
     return this._interface;
   }
 
@@ -60,7 +60,7 @@ class EthersErc20Module implements Erc20Interface{
    * @returns Uma descrição da transação decodificada.
    * @throws Um erro se o bytecode fornecido for nulo.
    */
-  public decodeBytecode(bytecode: ByteCode): ByteCodeDescription {
+  public decodeBytecode(bytecode: ByteCodeType): ByteCodeDescriptionType {
     NotBeNullRule(bytecode, "EthersErc20Module:decodeBytecode");
     return this._interface.parseTransaction({ data: bytecode });
   }
@@ -69,7 +69,7 @@ class EthersErc20Module implements Erc20Interface{
    * Obtém o contrato ERC-20.
    * @returns O contrato ERC-20.
    */
-  public get contract(): Contract {
+  public get contract(): ContractType {
     return this._contract;
   }
 
@@ -77,7 +77,7 @@ class EthersErc20Module implements Erc20Interface{
    * Obtém o endereço do contrato ERC-20.
    * @returns O endereço do contrato ERC-20.
    */
-  public get address(): Address {
+  public get address(): AddressType {
     return this._address;
   }
 }

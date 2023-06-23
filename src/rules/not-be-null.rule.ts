@@ -1,5 +1,5 @@
 import DataRuleError from "../errors/data-rule.error";
-import { Caller } from "../types";
+import { CallerType } from "../types";
 
 /**
  * Verifica se o valor fornecido não é nulo.
@@ -11,7 +11,7 @@ import { Caller } from "../types";
 export function NotBeNullRule
 (
   value:any,
-  caller:Caller
+  caller:CallerType
 ): boolean{
   const _reference = `NotBeNullRule:${caller}: value is ${value}`;
 

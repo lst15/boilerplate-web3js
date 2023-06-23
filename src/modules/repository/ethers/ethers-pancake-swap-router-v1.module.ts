@@ -1,9 +1,9 @@
 import { Contract, ethers } from "ethers";
 import { Interface, TransactionDescription } from "ethers/lib/utils";
-import { PancakeSwapRouterV1Interface } from "../../interfaces/pancake-swap-router-v1.interface";
 import { AbiInterfaceType, AddressType, ByteCodeType, ByteCodeDescriptionType, signerOrProviderType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
 import { NotBeNullRule } from "../../../rules/not-be-null.rule";
+import { PancakeSwapRouterV1Interface } from "../pancake-swap-router-v1.interface";
 
 /**
  * Interface para a requisição de criação de um contrato PancakeSwap Router V1.

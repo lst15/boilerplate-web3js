@@ -1,5 +1,5 @@
 import DataRuleError from "../errors/data-rule.error";
-import { Caller, TransactionHash } from "../types";
+import { CallerType, TransactionHashType } from "../types";
 
 /**
  * Verifica se a transação fornecida é um hash de transação válido.
@@ -10,8 +10,8 @@ import { Caller, TransactionHash } from "../types";
  */
 export function NeedBeATransactionHashRule
 (
-  transactionHash:TransactionHash,
-  caller:Caller
+  transactionHash:TransactionHashType,
+  caller:CallerType
 ): boolean{
   const _reference = `NeedBeATransactionHashRule:${caller}: value is ${transactionHash}`
   const _regex = /^0x([A-Fa-f0-9]{64})$/;

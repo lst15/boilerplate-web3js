@@ -1,12 +1,12 @@
-import { SystemQuery, SystemPort, TypeMnemonic, Endpoint, EthersJsonRpcProvider, Process } from "../../types";
+import { SystemQueryType, SystemPortType, TypeMnemonicType, EndpointType, EthersJsonRpcProviderType, ProcessType } from "../../types";
 
 export interface FoundryAnvilForkInterface{
-  _systemQuery: SystemQuery;
-  _systemPort: SystemPort;
-  _mnemonic: TypeMnemonic;
-  _endpoint: Endpoint;
-  _provider: EthersJsonRpcProvider;
-  _process: Process;
+  _systemQuery: SystemQueryType;
+  _systemPort: SystemPortType;
+  _mnemonic: TypeMnemonicType;
+  _endpoint: EndpointType;
+  _provider: EthersJsonRpcProviderType;
+  _process: ProcessType;
 
   /**
    * Retorna o provedor Ethers utilizado para interagir com a rede forked.

@@ -1,5 +1,5 @@
 import DataRuleError from "../errors/data-rule.error";
-import { Caller, Value } from "../types";
+import { CallerType, ValueType } from "../types";
 
 /**
  * Verifica se o valor fornecido é um número positivo.
@@ -10,8 +10,8 @@ import { Caller, Value } from "../types";
  */
 export function NeedBeAPositiveNumberRule
 (
-  value:Value,
-  caller:Caller
+  value:ValueType,
+  caller:CallerType
 ): boolean{
   const _reference = `NeedBeAPositiveNumberRule:${caller}: value is ${value}`;
 

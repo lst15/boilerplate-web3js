@@ -1,5 +1,5 @@
 import DataRuleError from "../errors/data-rule.error";
-import { Address, Caller } from "../types";
+import { AddressType, CallerType } from "../types";
 
 /**
  * Verifica se o endereço fornecido é um endereço ERC20 válido.
@@ -10,8 +10,8 @@ import { Address, Caller } from "../types";
  */
 export function NeedBeErc20AddressRule
 (
-  address:Address,
-  caller:Caller
+  address:AddressType,
+  caller:CallerType
 ): boolean{
   const _reference = `NeedBeErc20AddressRule:${caller}: value is ${address}`
   const _regex = /^(?:0x)[0-9a-fA-F]{40}$/;

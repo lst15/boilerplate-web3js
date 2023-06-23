@@ -1,8 +1,9 @@
-import { WebsocketProvider } from "../../interfaces/websocket-provider.interface";
+
 import { EndpointType, TransactionType } from "../../../types";
 import {  ethers } from "ethers";
 import { EthersConnectionError } from "../../../errors/ethers-connection.error";
 import { NeedBeATransactionHashRule } from "../../../rules/need-be-a-transaction-hash.rule";
+import { WebsocketProvider } from "../websocket-provider.interface";
 
 export interface EthersWebsocketModuleRequest {
   endpoint: EndpointType;
