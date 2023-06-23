@@ -1,4 +1,4 @@
-import EthersMnemonicModule, { EthersMnemonicModuleRequest } from "../../modules/ethers/ethers-mnemonic.module";
+import EthersMnemonicModule, { EthersMnemonicModuleRequest } from "../../repository/ethers/ethers-mnemonic.module";
 
 class EthersMnemonicFactory{
   static create({mnemonic}:EthersMnemonicModuleRequest){

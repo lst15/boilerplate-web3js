@@ -1,4 +1,4 @@
-import EthersWalletManagerModule from "../../modules/ethers/ethers-wallet-manager.module";
+import EthersWalletManagerModule from "../../repository/ethers/ethers-wallet-manager.module";
 
 class EthersWalletManagerFactory{
   static create(){

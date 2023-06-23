@@ -6,7 +6,7 @@ import { IBlockTransactions } from "../../../config/block-transactions/block-tra
 import { NeedBeAPositiveNumberRule } from "../../../rules/need-be-a-positive-number.rule";
 import { NeedBeATransactionHashRule } from "../../../rules/need-be-a-transaction-hash.rule";
 import { BlockNumberType, TransactionHashListType, EthersWebSocketProviderType } from "../../../types";
-import { BlockTransactionsInterface } from "../../interfaces/block-transactions.interface";
+import { BlockTransactionsInterface } from "../block-transactions.interface";
 import { SystemCache } from "../../interfaces/system-cache.interface";
 
 export interface EthersBlockTransactionsModuleRequest {

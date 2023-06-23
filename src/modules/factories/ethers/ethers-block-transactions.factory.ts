@@ -1,5 +1,5 @@
 import FileSystemCacheModule from "../../file-system-cache.module";
-import EthersBlockTransactionsModule from "../../modules/ethers/ethers-block-transactions.module";
+import EthersBlockTransactionsModule from "../../repository/ethers/ethers-block-transactions.module";
 
 class EthersBlockTransactionsFactory{
   static create(fileSystemCache:FileSystemCacheModule){

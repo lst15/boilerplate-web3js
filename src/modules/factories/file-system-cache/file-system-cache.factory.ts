@@ -1,4 +1,4 @@
-import FileSystemCacheModule, { FileSystemCacheModuleRequest } from "../modules/file-system-cache.module";
+import FileSystemCacheModule, { FileSystemCacheModuleRequest } from "../repository/file-system-cache/file-system-cache.module";
 
 class FileSystemCacheFactory{
   static create({namespace}:FileSystemCacheModuleRequest){

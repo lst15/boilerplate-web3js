@@ -1,4 +1,4 @@
-import EthersErc20Module, { EthersErc20ModuleRequest } from "../../modules/ethers/ethers-erc20.module";
+import EthersErc20Module, { EthersErc20ModuleRequest } from "../../repository/ethers/ethers-erc20.module";
 
 class EthersErc20Factory{
   static create({address,signerOrProvider}:EthersErc20ModuleRequest){

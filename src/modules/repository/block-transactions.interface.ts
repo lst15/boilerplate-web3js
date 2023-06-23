@@ -1,10 +1,10 @@
 import BlockTransactions, { IBlockTransactions } from "../../config/block-transactions/block-transactions";
-import { BlockNumber, TransactionHashList } from "../../types";
-import FileSystemCacheModule from "../file-system-cache.module";
+import { BlockNumberType, TransactionHashListType } from "../../types";
+import FileSystemCacheModule from "./file-system-cache/file-system-cache.module";
 
 export interface BlockTransactionsInterface {
-  _pendingBlock: BlockNumber;
-  _pendingTransactions: TransactionHashList;
+  _pendingBlock: BlockNumberType;
+  _pendingTransactions: TransactionHashListType;
   _lastMiningDuration: number;
   _fileSystemCache: FileSystemCacheModule;
 
@@ -30,13 +30,13 @@ export interface BlockTransactionsInterface {
    * Obtém o número do bloco atual.
    * @returns {BlockNumber} O número do bloco atual.
    */  
-  get CurrentBlock(): BlockNumber 
+  get CurrentBlock(): BlockNumberType
 
   /**
    * Obtém a lista de hashes de transações do bloco anterior.
    * @param {BlockNumber} block - O número do bloco anterior.
    * @returns {Promise<TransactionHashList>} A lista de hashes de transações do bloco anterior.
    */  
-  getLastBlock(block: BlockNumber): Promise<TransactionHashList>
+  getLastBlock(block: BlockNumberType): Promise<TransactionHashListType>
 
 }

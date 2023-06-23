@@ -1,5 +1,5 @@
-import { NotBeNullRule } from "../../rules/not-be-null.rule";
-import { CacheNameSpaceType } from "../../types";
+import { NotBeNullRule } from "../../../rules/not-be-null.rule";
+import { CacheNameSpaceType } from "../../../types";
 import { SystemCache } from "../interfaces/system-cache.interface";
 import Cache, { FileSystemCache } from "file-system-cache";
 

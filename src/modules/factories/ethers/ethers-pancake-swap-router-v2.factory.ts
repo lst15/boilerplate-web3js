@@ -1,4 +1,4 @@
-import EthersPancakeSwapRouterV2Module, { EthersPancakeSwapRouterV2ModuleRequest } from "../../modules/ethers/ethers-pancake-swap-router-v2.module";
+import EthersPancakeSwapRouterV2Module, { EthersPancakeSwapRouterV2ModuleRequest } from "../../repository/ethers/ethers-pancake-swap-router-v2.module";
 
 class EthersPancakeSwapRouterV2{
   static create({address,signerOrProvider}:EthersPancakeSwapRouterV2ModuleRequest){

@@ -1,4 +1,4 @@
-import EthersWebsocketProviderModule, { EthersWebsocketModuleRequest } from "../../modules/ethers/ethers-websocket-provider.module";
+import EthersWebsocketProviderModule, { EthersWebsocketModuleRequest } from "../../repository/ethers/ethers-websocket-provider.module";
 
 class EthersWebsocketProviderFactory{
   static create({endpoint}:EthersWebsocketModuleRequest){
