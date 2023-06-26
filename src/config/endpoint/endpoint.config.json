@@ -1,5 +1,5 @@
 {
-    "connection_config": {
+    "endpoint_configs": {
         "list": {
             "default": {
                 "ws": "wss://mainnet.infura.io/ws/v3/6a168940ef48465d9b5894c30d5d9ab7",

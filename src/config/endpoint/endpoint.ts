@@ -5,32 +5,32 @@ import { LoadConfig } from "../../utils/load-config.util";
 /**
  * Representa uma conexão configurada a partir de um arquivo JSON.
  */
-export interface IConnection {
+export interface IEndpoint {
   list: {
     default: { ws: string, http: string };
     [key: string]: { ws: string, http: string };
   };
 }
 
-class Connection {
-  private _connection_config: IConnection;
+class Endpoint {
+  private _endpoint_configs: IEndpoint;
   private _reference: string;
   private _fileConfig: string;
   private _configName: string;
 
   /**
-   * Cria uma instância da classe Connection.
+   * Cria uma instância da classe Endpoint.
    * Carrega a configuração de conexão a partir de um arquivo JSON e valida as informações.
    * @throws {InvalidFileConfigError} Quando a configuração do arquivo é inválida ou ausente.
    * @throws {InvalidDataConfigError} Quando os URLs especificados na configuração são inválidos.
    */
   constructor() {
-    this._configName = `connection_config`;
-    this._fileConfig = "connection";
+    this._configName = `endpoint_configs`;
+    this._fileConfig = "endpoint";
     this._reference = `${this._fileConfig}:${this._configName}`;
 
     // Carrega a configuração a partir de um arquivo JSON
-    const config: IConnection = LoadConfig<IConnection>({
+    const config: IEndpoint = LoadConfig<IEndpoint>({
       file: `${__dirname}/${this._fileConfig}.config.json`,
       config_name: this._configName,
       reference: this._reference,
@@ -72,16 +72,16 @@ class Connection {
       }
     }
 
-    this._connection_config = config;
+    this._endpoint_configs = config;
   }
 
   /**
    * Obtém a configuração de conexão carregada do arquivo JSON.
    * @returns A configuração de conexão.
    */
-  public get config(): IConnection {
-    return this._connection_config;
+  public get config(): IEndpoint {
+    return this._endpoint_configs;
   }
 }
 
-export default Connection;
+export default Endpoint;
