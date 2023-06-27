@@ -6,9 +6,21 @@
                 "http": "https://bsc.publicnode.com"
             },
             "free_comunity":{
-                "ws":"wss://127.0.0.1:8008",
+                "ws":"wss://bsc-testnet.nodereal.io/ws/v1/96635033950d4b8e980594bf7a446a6c",
                 "http":"https://bscrpc.com"
-            }
+            },
+            "mainnet_bsc_getblock":{
+                "ws":"wss://bsc-mainnet.nodereal.io/ws/v1/96635033950d4b8e980594bf7a446a6c",
+                "http":"https://bsc.w3node.com/3270ea6ee9f571f74c51fadb5dae3cc4c955e2237d052d17a1aef417537aa389/api"
+            },
+            "chainstack":{
+                "ws":"wss://ws-nd-778-453-403.p2pify.com/4f23f405a5b522f8952d141cb731f1e0",
+                "http":"https://bsc.w3node.com/3270ea6ee9f571f74c51fadb5dae3cc4c955e2237d052d17a1aef417537aa389/api"                
+            }   
         }
+    },
+
+    "description":{
+        "mainnet_bsc_getblock":"https://account.getblock.io/"
     }
 }
