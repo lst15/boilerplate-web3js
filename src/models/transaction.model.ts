@@ -1,9 +1,9 @@
 import { BigNumber } from "ethers";
-import { Transaction } from "../types";
+import { TransactionType } from "../types";
 import { TransactionReceipt } from "@ethersproject/abstract-provider";
 import { AccessList } from "ethers/lib/utils";
 
-class TransactionModel implements Transaction {
+class TransactionModel implements TransactionType {
   hash: string;
   blockNumber?: number | undefined;
   blockHash?: string | undefined;
@@ -27,7 +27,7 @@ class TransactionModel implements Transaction {
   maxPriorityFeePerGas?: BigNumber | undefined;
   maxFeePerGas?: BigNumber | undefined;
 
-  constructor(data: Transaction) {
+  constructor(data: TransactionType) {
     this.hash = data.hash;
     this.blockNumber = data.blockNumber;
     this.blockHash = data.blockHash;
