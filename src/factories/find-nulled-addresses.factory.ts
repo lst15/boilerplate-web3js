@@ -1,5 +1,5 @@
 import Endpoint from "../config/endpoint/endpoint";
-import EthersWebsocketProviderModule from "../modules/repository/ethers/ethers-websocket-provider.module";
+import EthersWebsocketProviderModule from "../modules/implementations/ethers/ethers-websocket-provider.module";
 import { FindNulledAddressesUseCase } from "../usecases/find-nulled-addresses.usecase";
 
 export function FindNulledAddressesFactory(){

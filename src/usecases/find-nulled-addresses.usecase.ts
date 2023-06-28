@@ -1,5 +1,5 @@
 import TransactionModel from "../models/transaction.model";
-import { WebsocketProviderRepository } from "../modules/repository/websocket-provider.repository";
+import { WebsocketProviderRepository } from "../modules/repositories/websocket-provider.repository";
 import { AddressType, EthersWebSocketProviderType, TransactionHashType } from "../types";
 
 export class FindNulledAddressesUseCase{
