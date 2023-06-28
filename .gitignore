@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 ./src/cache
+
+# Ignore sonar login key
+sonar-project.properties

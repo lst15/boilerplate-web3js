@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  sonarqube:
+    image: sonarqube
+    ports:
+      - 9000:9000
+      - 9092:9092
+    container_name: sonarqube
+    restart: unless-stopped
