@@ -5,18 +5,18 @@
 import { NeedBeAPositiveNumberRule } from "../../../rules/need-be-a-positive-number.rule";
 import { NeedBeATransactionHashRule } from "../../../rules/need-be-a-transaction-hash.rule";
 import { BlockNumberType, TransactionHashListType, EthersWebSocketProviderType } from "../../../types";
-import { BlockTransactionsInterface } from "../block-transactions.repository";
-import { SystemCache } from "../system-cache.repository";
+import { BlockTransactionsRepository } from "../block-transactions.repository";
+import { SystemCacheRepository } from "../system-cache.repository";
 
 export interface EthersBlockTransactionsModuleRequest {
-  systemCache: SystemCache;
+  systemCache: SystemCacheRepository;
 }
 
-class EthersBlockTransactionsModule implements BlockTransactionsInterface {
+class EthersBlockTransactionsModule implements BlockTransactionsRepository {
   _pendingBlock: BlockNumberType;
   _pendingTransactions: TransactionHashListType;
   _lastMiningDuration: number;
-  _fileSystemCache: SystemCache;  
+  _fileSystemCache: SystemCacheRepository;  
 
   /**
    * Cria uma instância do módulo BlockTransactionsModule para capturar transações e blocos em tempo real.

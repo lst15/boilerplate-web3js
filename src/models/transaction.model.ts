@@ -5,27 +5,27 @@ import { AccessList } from "ethers/lib/utils";
 
 class TransactionModel implements TransactionType {
   hash: string;
-  blockNumber: number | undefined;
-  blockHash: string | undefined;
-  timestamp: number | undefined;
+  blockNumber?: number;
+  blockHash?: string;
+  timestamp?: number;
   confirmations: number;
   from: string;
-  raw: string | undefined;
+  raw?: string;
   wait: (confirmations?: number | undefined) => Promise<TransactionReceipt>;
-  to: string | undefined;
+  to?: string;
   nonce: number;
   gasLimit: BigNumber;
-  gasPrice: BigNumber | undefined;
+  gasPrice?: BigNumber;
   data: string;
   value: BigNumber;
   chainId: number;
-  r: string | undefined;
-  s: string | undefined;
-  v: number | undefined;
-  type: number | null | undefined;
-  accessList: AccessList | undefined;
-  maxPriorityFeePerGas: BigNumber | undefined;
-  maxFeePerGas: BigNumber | undefined;
+  r?: string;
+  s?: string;
+  v?: number;
+  type?: number | null;
+  accessList?: AccessList;
+  maxPriorityFeePerGas?: BigNumber;
+  maxFeePerGas?: BigNumber;
 
   constructor(data: TransactionType) {
     this.hash = data.hash;
