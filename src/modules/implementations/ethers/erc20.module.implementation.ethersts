@@ -2,12 +2,11 @@ import { NotBeNullRule } from "../../../rules/not-be-null.rule";
 import { AddressType, signerOrProviderType, FileNameType, AbiInterfaceType, ContractType, ByteCodeType, ByteCodeDescriptionType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
 import ethers from "ethers";
-import { Erc20Repository } from "../erc20.repository";
-
+import {Erc20ModuleRepository} from "../../repositories/erc20.module.repository"
 /**
  * Interface para a requisição de criação de um contrato ERC20.
  */
-export interface EthersErc20ModuleRequest {
+export interface Erc20ModuleImplementationEthersRequest {
   address: AddressType;
   signerOrProvider?:signerOrProviderType;
 }
@@ -17,7 +16,7 @@ export interface EthersErc20ModuleRequest {
  * 
  * Ela lida com o carregamento e processamento do ABI, bem como com a decodificação do bytecode de transações relacionadas a esse contrato.
  */
-class EthersErc20Module implements Erc20Repository{
+class Erc20ModuleImplementationEthers implements Erc20ModuleRepository{
   _abi: any;
   _AbiFileName: FileNameType;
   _interface: AbiInterfaceType;
@@ -28,7 +27,7 @@ class EthersErc20Module implements Erc20Repository{
    * Cria uma nova instância da classe `EthersErc20Module`.
    * @param address O endereço do contrato ERC-20.
    */
-  constructor({ address,signerOrProvider }: EthersErc20ModuleRequest) {
+  constructor({ address,signerOrProvider }: Erc20ModuleImplementationEthersRequest) {
     this._AbiFileName = "erc20";
     this._abi = openFile(`${__dirname}/../../abi/${this._AbiFileName}.abi.json`);
     this._interface = new ethers.utils.Interface(this._abi);
@@ -82,4 +81,4 @@ class EthersErc20Module implements Erc20Repository{
   }
 }
 
-export default EthersErc20Module;
+export default Erc20ModuleImplementationEthers;

@@ -2,9 +2,9 @@ import { JsonRpcProvider } from "@ethersproject/providers";
 import { ethers } from "ethers";
 import { HDNode } from "ethers/lib/utils";
 import { EthersJsonRpcProviderType,WalletType } from "../../../types";
-import { WalletManagerInterface } from "../wallet-manager.repository";
+import { WalletManagerModuleRepository } from "../../repositories/wallet-manager.module.repository";
 
-class EthersWalletManagerModule implements WalletManagerInterface {
+class WalletManagerModuleImplementationEthers implements WalletManagerModuleRepository {
   /**
    * Obtém uma instância de carteira Ethereum com base no HDNode fornecido.
    * @param {HDNode} hdNode - O HDNode usado para criar a carteira.
@@ -59,4 +59,4 @@ class EthersWalletManagerModule implements WalletManagerInterface {
 
 }
 
-export default EthersWalletManagerModule;
+export default WalletManagerModuleImplementationEthers;

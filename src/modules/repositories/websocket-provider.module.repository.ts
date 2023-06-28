@@ -1,6 +1,6 @@
 import { TransactionType } from "../../types";
 
-export interface WebsocketProviderRepository{
+export interface WebsocketProviderModuleRepository{
   _provider:any;
 
   /**

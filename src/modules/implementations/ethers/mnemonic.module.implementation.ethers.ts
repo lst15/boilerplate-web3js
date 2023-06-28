@@ -1,24 +1,23 @@
 import { HDNode } from "ethers/lib/utils";
 import { ethers } from "ethers";
 import { TypeMnemonicType } from "../../../types";
-import { MnemonicInterface } from "../mnemonic.repository";
-
+import { MnemonicModuleRepository } from "../../repositories/mnemonic.module.repository";
 
 /**
  * Interface para a solicitação de criação do módulo EthersMnemonicModule.
  */
-export interface EthersMnemonicModuleRequest {
+export interface MnemonicModuleImplementationEthersRequest {
   mnemonic: TypeMnemonicType;
 }
 
-class EthersMnemonicModule implements MnemonicInterface {
+class MnemonicModuleImplementationEthers implements MnemonicModuleRepository {
   _hdNode: HDNode;
 
   /**
    * Cria uma instância do módulo EthersMnemonicModule com base no mnemônico fornecido.
    * @param {EthersMnemonicModuleRequest} options - Opções para a criação do módulo.
    */
-  constructor({ mnemonic }: EthersMnemonicModuleRequest) {
+  constructor({ mnemonic }: MnemonicModuleImplementationEthersRequest) {
     this._hdNode = ethers.utils.HDNode.fromMnemonic(mnemonic);
   }
 
@@ -74,4 +73,4 @@ class EthersMnemonicModule implements MnemonicInterface {
   
 }
 
-export default EthersMnemonicModule;
+export default MnemonicModuleImplementationEthersRequest;

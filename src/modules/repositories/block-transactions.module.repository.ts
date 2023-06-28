@@ -1,7 +1,7 @@
 import { BlockNumberType, TransactionHashListType } from "../../types";
-import FileSystemCacheModule from "./file-system-cache/file-system-cache.module";
+import FileSystemCacheModule from "../implementations/file-system-cache/file-system-cache.module";
 
-export interface BlockTransactionsRepository{
+export interface BlockTransactionsModuleRepository{
   _pendingBlock: BlockNumberType;
   _pendingTransactions: TransactionHashListType;
   _lastMiningDuration: number;

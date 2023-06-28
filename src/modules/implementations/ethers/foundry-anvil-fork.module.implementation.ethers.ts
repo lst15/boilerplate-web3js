@@ -5,18 +5,18 @@ import { ethers } from "ethers";
 import { exec, execSync } from "child_process";
 import { EndpointType, EthersJsonRpcProviderType, ProcessType, SystemPortType, SystemQueryType, TypeMnemonicType } from "../../../types";
 import AnvilNotFound from "../../../errors/anvil-not-found.error";
-import { FoundryAnvilForkRepository } from "../foundry-anvil-fork.repository";
+import { FoundryAnvilForkModuleRepository } from "../../repositories/foundry-anvil-fork.module.repository";
 
 /**
  * Interface para a solicitação de criação do módulo EthersFoundryAnvilForkModule.
  */
-export interface EthersFoundryAnvilForkModuleRequest {
+export interface FoundryAnvilForkModuleImplementationEthersRequest {
   port: SystemPortType;
   mnemonic: TypeMnemonicType;
   endpoint: EndpointType;
 }
 
-class EthersFoundryAnvilForkModule implements FoundryAnvilForkRepository {
+class FoundryAnvilForkModuleImplementationEthers implements FoundryAnvilForkModuleRepository {
   _systemQuery: SystemQueryType;
   _systemPort: SystemPortType;
   _mnemonic: TypeMnemonicType;
@@ -28,7 +28,7 @@ class EthersFoundryAnvilForkModule implements FoundryAnvilForkRepository {
    * Cria uma instância do módulo EthersFoundryAnvilForkModule.
    * @param {EthersFoundryAnvilForkModuleRequest} options - Opções para a criação do módulo.
    */
-  constructor({ port, mnemonic, endpoint }: EthersFoundryAnvilForkModuleRequest) {
+  constructor({ port, mnemonic, endpoint }: FoundryAnvilForkModuleImplementationEthersRequest) {
     this._systemPort = port;
     this._mnemonic = mnemonic;
     this._endpoint = endpoint;
@@ -67,4 +67,4 @@ class EthersFoundryAnvilForkModule implements FoundryAnvilForkRepository {
   }
 }
 
-export default EthersFoundryAnvilForkModule;
+export default FoundryAnvilForkModuleImplementationEthers;

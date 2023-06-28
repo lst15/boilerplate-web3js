@@ -3,18 +3,18 @@ import { Interface } from "ethers/lib/utils";
 import { AbiInterfaceType, AddressType, ByteCodeType, ByteCodeDescriptionType, signerOrProviderType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
 import { NotBeNullRule } from "../../../rules/not-be-null.rule";
-import { PancakeSwapRouterV2Repository } from "../pancake-swap-router-v2.repository";
-
+import { PancakeSwapRouterV1ModuleRepository } from "../../repositories/pancake-swap-router-v1.module.repository";
 
 /**
- * Interface para a requisição de criação de um contrato PancakeSwap Router V2.
+ * Interface para a requisição de criação de um contrato PancakeSwap Router V1.
  */
-export interface EthersPancakeSwapRouterV2ModuleRequest {
+export interface PancakeSwapRouterV1ModuleImplementationEthersRequest {
   address: AddressType;
   signerOrProvider?:signerOrProviderType;
 }
 
-class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Repository{
+
+class PancakeSwapRouterV1ModuleImplementationEthers implements PancakeSwapRouterV1ModuleRepository {
   _abi: any;
   _AbiFileName: string;
   _interface: Interface;
@@ -22,12 +22,12 @@ class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Repository{
   _contract: Contract;
 
   /**
-   * Cria uma instância do objeto `PancakeSwapRouterV2Module`.
+   * Cria uma instância do objeto `PancakeSwapRouterV1Module`.
    * Carrega o arquivo ABI correspondente e cria uma interface ethers com base nesse ABI.
-   * @param address O endereço do contrato PancakeSwap Router V2.
+   * @param address O endereço do contrato PancakeSwap Router V1.
    */
-  constructor({ address,signerOrProvider }: EthersPancakeSwapRouterV2ModuleRequest) {
-    this._AbiFileName = "pancake-swap-router-v2";
+  constructor({ address,  signerOrProvider }: PancakeSwapRouterV1ModuleImplementationEthersRequest) {
+    this._AbiFileName = "pancake-swap-router-v1";
     this._abi = openFile(`${__dirname}/../../abi/${this._AbiFileName}.abi.json`);
     this._interface = new ethers.utils.Interface(this._abi);
     this._address = address;
@@ -39,8 +39,9 @@ class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Repository{
     )
   }
 
+
   /**
-   * Obtém o ABI do contrato PancakeSwap Router V2.
+   * Obtém o ABI do contrato PancakeSwap Router V1.
    * @returns O ABI do contrato.
    */
   public get abi(): any {
@@ -48,7 +49,7 @@ class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Repository{
   }
 
   /**
-   * Obtém a interface ethers do contrato PancakeSwap Router V2.
+   * Obtém a interface ethers do contrato PancakeSwap Router V1.
    * @returns A interface ethers do contrato.
    */
   public get interface(): AbiInterfaceType {
@@ -56,32 +57,31 @@ class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Repository{
   }
 
   /**
-   * Decodifica o bytecode de uma transação PancakeSwap Router V2 e retorna sua descrição.
+   * Decodifica o bytecode de uma transação PancakeSwap Router V1 e retorna sua descrição.
    * @param bytecode O bytecode da transação a ser decodificado.
    * @returns A descrição da transação decodificada.
    * @throws Um erro se o bytecode fornecido for nulo ou indefinido.
    */
   public decodeBytecode(bytecode: ByteCodeType): ByteCodeDescriptionType {
-    NotBeNullRule(bytecode, "PancakeSwapRouterV2Module:decodeBytecode");
+    NotBeNullRule(bytecode, "PancakeSwapRouterV1Module:decodeBytecode");
     return this._interface.parseTransaction({ data: bytecode });
   }
 
   /**
-   * Obtém o contrato PancakeSwap Router V2.
-   * @returns O contrato PancakeSwap Router V2.
+   * Obtém o contrato PancakeSwap Router V1.
+   * @returns O contrato PancakeSwap Router V1.
    */
   public get contract(): Contract {
     return this._contract;
   }
 
   /**
-   * Obtém o endereço do contrato PancakeSwap Router V2.
-   * @returns O endereço do contrato PancakeSwap Router V2.
+   * Obtém o endereço do contrato PancakeSwap Router V1.
+   * @returns O endereço do contrato PancakeSwap Router V1.
    */
   public get address(): AddressType {
     return this._address;
   }
-
 }
 
-export default EthersPancakeSwapRouterV2Module;
+export default PancakeSwapRouterV1ModuleImplementationEthers;

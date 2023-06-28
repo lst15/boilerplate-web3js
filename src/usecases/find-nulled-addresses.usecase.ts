@@ -1,10 +1,10 @@
 import TransactionModel from "../models/transaction.model";
-import { WebsocketProviderRepository } from "../modules/repositories/websocket-provider.repository";
+import { WebsocketProviderModuleRepository } from "../modules/repositories/websocket-provider.module.repository";
 import { AddressType, EthersWebSocketProviderType, TransactionHashType } from "../types";
 
 export class FindNulledAddressesUseCase{
   constructor(
-    private websocketProviderRepository:WebsocketProviderRepository
+    private websocketProviderRepository:WebsocketProviderModuleRepository
   ){ /* Dependency injection*/ }
   
   private checkPrefix(address:AddressType){

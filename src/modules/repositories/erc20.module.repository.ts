@@ -5,7 +5,7 @@ import { FileNameType, AbiInterfaceType, AddressType, ContractType, ByteCodeType
  * 
  * Ela lida com o carregamento e processamento do ABI, bem como com a decodificação do bytecode de transações relacionadas a esse contrato.
  */
-export interface Erc20Repository{
+export interface Erc20ModuleRepository{
   _abi: any;
   _AbiFileName: FileNameType;
   _interface: AbiInterfaceType;

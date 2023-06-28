@@ -1,6 +1,6 @@
 import { SystemQueryType, SystemPortType, TypeMnemonicType, EndpointType, EthersJsonRpcProviderType, ProcessType } from "../../types";
 
-export interface FoundryAnvilForkRepository{
+export interface FoundryAnvilForkModuleRepository{
   _systemQuery: SystemQueryType;
   _systemPort: SystemPortType;
   _mnemonic: TypeMnemonicType;
