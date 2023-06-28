@@ -2,7 +2,7 @@ import { JsonRpcProvider } from "@ethersproject/providers";
 import { ethers } from "ethers";
 import { HDNode } from "ethers/lib/utils";
 import { EthersJsonRpcProviderType,WalletType } from "../../../types";
-import { WalletManagerInterface } from "../wallet-manager.interface";
+import { WalletManagerInterface } from "../wallet-manager.repository";
 
 class EthersWalletManagerModule implements WalletManagerInterface {
   /**

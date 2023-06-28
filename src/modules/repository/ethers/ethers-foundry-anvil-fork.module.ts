@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import { exec, execSync } from "child_process";
 import { EndpointType, EthersJsonRpcProviderType, ProcessType, SystemPortType, SystemQueryType, TypeMnemonicType } from "../../../types";
 import AnvilNotFound from "../../../errors/anvil-not-found.error";
-import { FoundryAnvilForkInterface } from "../foundry-anvil-fork.interface";
+import { FoundryAnvilForkRepository } from "../foundry-anvil-fork.repository";
 
 /**
  * Interface para a solicitação de criação do módulo EthersFoundryAnvilForkModule.
@@ -16,7 +16,7 @@ export interface EthersFoundryAnvilForkModuleRequest {
   endpoint: EndpointType;
 }
 
-class EthersFoundryAnvilForkModule implements FoundryAnvilForkInterface {
+class EthersFoundryAnvilForkModule implements FoundryAnvilForkRepository {
   _systemQuery: SystemQueryType;
   _systemPort: SystemPortType;
   _mnemonic: TypeMnemonicType;

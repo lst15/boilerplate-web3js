@@ -3,7 +3,7 @@ import { Interface } from "ethers/lib/utils";
 import { AbiInterfaceType, AddressType, ByteCodeType, ByteCodeDescriptionType, signerOrProviderType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
 import { NotBeNullRule } from "../../../rules/not-be-null.rule";
-import { PancakeSwapFactoryV2Interface } from "../pancake-swap-factory-v2.interface";
+import { PancakeSwapFactoryV2Repository } from "../pancake-swap-factory-v2.repository";
 
 /**
  * Interface para a requisição de criação de um contrato PancakeSwap Factory V2.
@@ -13,7 +13,7 @@ export interface EthersPancakeSwapFactoryV2ModuleRequest {
   signerOrProvider?:signerOrProviderType
 }
 
-class EthersPancakeSwapFactoryV2Module implements PancakeSwapFactoryV2Interface {
+class EthersPancakeSwapFactoryV2Module implements PancakeSwapFactoryV2Repository {
   _abi: any;
   _AbiFileName: string;
   _interface: Interface;

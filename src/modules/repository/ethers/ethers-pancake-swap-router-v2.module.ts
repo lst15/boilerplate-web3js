@@ -3,7 +3,7 @@ import { Interface } from "ethers/lib/utils";
 import { AbiInterfaceType, AddressType, ByteCodeType, ByteCodeDescriptionType, signerOrProviderType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
 import { NotBeNullRule } from "../../../rules/not-be-null.rule";
-import { PancakeSwapRouterV2Interface } from "../pancake-swap-router-v2.interface";
+import { PancakeSwapRouterV2Repository } from "../pancake-swap-router-v2.repository";
 
 
 /**
@@ -14,7 +14,7 @@ export interface EthersPancakeSwapRouterV2ModuleRequest {
   signerOrProvider?:signerOrProviderType;
 }
 
-class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Interface{
+class EthersPancakeSwapRouterV2Module implements PancakeSwapRouterV2Repository{
   _abi: any;
   _AbiFileName: string;
   _interface: Interface;

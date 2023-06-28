@@ -5,7 +5,7 @@
 import { NeedBeAPositiveNumberRule } from "../../../rules/need-be-a-positive-number.rule";
 import { NeedBeATransactionHashRule } from "../../../rules/need-be-a-transaction-hash.rule";
 import { BlockNumberType, TransactionHashListType, EthersWebSocketProviderType } from "../../../types";
-import { BlockTransactionsInterface } from "../block-transactions.interface";
+import { BlockTransactionsInterface } from "../block-transactions.repository";
 import { SystemCache } from "../system-cache.repository";
 
 export interface EthersBlockTransactionsModuleRequest {

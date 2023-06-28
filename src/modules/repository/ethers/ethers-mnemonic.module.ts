@@ -1,7 +1,7 @@
 import { HDNode } from "ethers/lib/utils";
 import { ethers } from "ethers";
 import { TypeMnemonicType } from "../../../types";
-import { MnemonicInterface } from "../mnemonic.interface";
+import { MnemonicInterface } from "../mnemonic.repository";
 
 
 /**

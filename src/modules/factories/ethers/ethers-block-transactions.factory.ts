@@ -1,6 +1,6 @@
 import EthersBlockTransactionsModule from "../../repository/ethers/ethers-block-transactions.module";
 import FileSystemCacheModule from "../../repository/file-system-cache/file-system-cache.module";
-import { SystemCache } from "../../repository/system-cache.interface";
+import { SystemCache } from "../../repository/system-cache.repository";
 
 class EthersBlockTransactionsFactory {
   /**

@@ -2,7 +2,7 @@ import { NotBeNullRule } from "../../../rules/not-be-null.rule";
 import { AddressType, signerOrProviderType, FileNameType, AbiInterfaceType, ContractType, ByteCodeType, ByteCodeDescriptionType } from "../../../types";
 import { openFile } from "../../../utils/load-file.util";
 import ethers from "ethers";
-import { Erc20Interface } from "../erc20.interface";
+import { Erc20Repository } from "../erc20.repository";
 
 /**
  * Interface para a requisição de criação de um contrato ERC20.
@@ -17,7 +17,7 @@ export interface EthersErc20ModuleRequest {
  * 
  * Ela lida com o carregamento e processamento do ABI, bem como com a decodificação do bytecode de transações relacionadas a esse contrato.
  */
-class EthersErc20Module implements Erc20Interface{
+class EthersErc20Module implements Erc20Repository{
   _abi: any;
   _AbiFileName: FileNameType;
   _interface: AbiInterfaceType;
