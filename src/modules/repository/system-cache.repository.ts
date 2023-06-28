@@ -1,4 +1,4 @@
-export interface SystemCache{
+export interface SystemCacheRepository{
   systemCache: any;
 
   /**

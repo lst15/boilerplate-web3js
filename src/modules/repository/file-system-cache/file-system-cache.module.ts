@@ -1,7 +1,7 @@
 import { NotBeNullRule } from "../../../rules/not-be-null.rule";
 import { CacheNameSpaceType } from "../../../types";
 import Cache, { FileSystemCache } from "file-system-cache";
-import { SystemCache } from "../system-cache.interface";
+import { SystemCache } from "../system-cache.repository";
 
 /**
  * A interface `FileSystemCacheModuleRequest` define a estrutura da requisição para criar uma instância de `FileSystemCacheModule`.

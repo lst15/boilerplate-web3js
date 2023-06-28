@@ -1,10 +1,10 @@
-import { FileNameType, AbiInterfaceType, AddressType,ContractType, ByteCodeDescriptionType, ByteCodeType } from "../../types";
+import { FileNameType, AbiInterfaceType, AddressType, ByteCodeType, ByteCodeDescriptionType,ContractType } from "../../types";
 
-export interface PancakeSwapFactoryV2Interface{
+export interface PancakeSwapRouterV1Repository{
   _abi: any;
   _AbiFileName: FileNameType;
   _interface: AbiInterfaceType;
-  _address: AddressType;
+  _address: AddressType
   _contract: ContractType; 
   
   /**

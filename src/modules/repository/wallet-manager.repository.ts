@@ -1,6 +1,6 @@
 import { EthersJsonRpcProviderType, HDNodeType, WalletType } from "../../types";
 
-export interface WalletManagerInterface {
+export interface WalletManagerRepository{
   
   /**
    * Obtém uma instância de carteira Ethereum com base no HDNode fornecido.

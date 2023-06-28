@@ -1,16 +1,16 @@
-import { FileName, AbiInterface, Address, Contract, ByteCode, ByteCodeDescription } from "../../types";
+import { FileNameType, AbiInterfaceType, AddressType, ContractType, ByteCodeType, ByteCodeDescriptionType } from "../../types";
 
 /**
  * A classe `EthersErc20Module` representa o contrato ABI (Application Binary Interface) de um contrato ERC-20.
  * 
  * Ela lida com o carregamento e processamento do ABI, bem como com a decodificação do bytecode de transações relacionadas a esse contrato.
  */
-export interface Erc20Interface{
+export interface Erc20Repository{
   _abi: any;
-  _AbiFileName: FileName;
-  _interface: AbiInterface;
-  _address: Address;
-  _contract: Contract;  
+  _AbiFileName: FileNameType;
+  _interface: AbiInterfaceType;
+  _address: AddressType;
+  _contract: ContractType;  
 
   /**
    * Retorna o ABI do contrato ERC-20.
@@ -22,7 +22,7 @@ export interface Erc20Interface{
    * Retorna a interface ethers.utils.Interface do contrato ERC-20.
    * @returns A interface ethers.utils.Interface do contrato.
    */  
-  get interface(): AbiInterface 
+  get interface(): AbiInterfaceType
 
   /**
    * Decodifica o bytecode de uma transação relacionada ao contrato ERC-20.
@@ -30,18 +30,18 @@ export interface Erc20Interface{
    * @returns Uma descrição da transação decodificada.
    * @throws Um erro se o bytecode fornecido for nulo.
    */  
-  decodeBytecode(bytecode: ByteCode): ByteCodeDescription
+  decodeBytecode(bytecode: ByteCodeType): ByteCodeDescriptionType
 
   /**
    * Obtém o contrato ERC-20.
    * @returns O contrato ERC-20.
    */  
-  get contract(): Contract 
+  get contract(): ContractType
 
   /**
    * Obtém o endereço do contrato ERC-20.
    * @returns O endereço do contrato ERC-20.
    */  
-  get address(): Address
+  get address(): AddressType
 
 }

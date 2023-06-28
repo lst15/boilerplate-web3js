@@ -1,6 +1,6 @@
 import { FileNameType, AbiInterfaceType, AddressType,ContractType, ByteCodeDescriptionType, ByteCodeType } from "../../types";
 
-export interface PancakeSwapRouterV2Interface{
+export interface PancakeSwapRouterV2Repository{
   _abi: any;
   _AbiFileName: FileNameType;
   _interface: AbiInterfaceType;

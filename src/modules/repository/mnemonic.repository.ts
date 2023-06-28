@@ -1,6 +1,6 @@
 import { HDNodeType, TypeMnemonicType } from "../../types";
 
-export interface MnemonicInterface {
+export interface MnemonicRepository {
   _hdNode: HDNodeType;
 
   /**
