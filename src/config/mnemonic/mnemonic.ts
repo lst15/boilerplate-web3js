@@ -41,11 +41,6 @@ class Mnemonic {
       throw new InvalidFileConfigError({ reference: `${this._reference}:list` });
     }
 
-    // // Verifica a existência da propriedade 'default' na configuração
-    // if (config.list.default === undefined) {
-    //   throw new InvalidFileConfigError({ reference: `${this._reference}:list:default` });
-    // }
-
     const mnemonicRegex = /^([a-zA-Z]+\s){11}[a-zA-Z]+$/;
 
     // Valida os mnemônicos especificados na configuração

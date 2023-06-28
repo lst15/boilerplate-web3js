@@ -2,7 +2,6 @@
  * Módulo BlockTransactionsModule que lida com a captura de transações e blocos em tempo real.
  */
 
-import { IBlockTransactions } from "../../../config/block-transactions/block-transactions";
 import { NeedBeAPositiveNumberRule } from "../../../rules/need-be-a-positive-number.rule";
 import { NeedBeATransactionHashRule } from "../../../rules/need-be-a-transaction-hash.rule";
 import { BlockNumberType, TransactionHashListType, EthersWebSocketProviderType } from "../../../types";

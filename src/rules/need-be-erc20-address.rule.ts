@@ -16,8 +16,10 @@ export function NeedBeErc20AddressRule
   const _reference = `NeedBeErc20AddressRule:${caller}: value is ${address}`
   const _regex = /^(?:0x)[0-9a-fA-F]{40}$/;
   
-  if(!_regex.test(address))
+  if(!_regex.test(address)) {
     throw new DataRuleError({reference:_reference})
-
-  return true;
+  } else {
+    return true;
+  }
+  
 }

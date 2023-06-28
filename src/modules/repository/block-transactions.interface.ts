@@ -1,4 +1,3 @@
-import BlockTransactions, { IBlockTransactions } from "../../config/block-transactions/block-transactions";
 import { BlockNumberType, TransactionHashListType } from "../../types";
 import FileSystemCacheModule from "./file-system-cache/file-system-cache.module";
 

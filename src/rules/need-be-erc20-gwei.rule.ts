@@ -9,15 +9,17 @@ import { CallerType, GweiType } from "../types";
  * @throws {DataRuleError} - Lança uma exceção DataRuleError se o argumento de gwei não corresponder ao padrão esperado.
  */
 export function NeedBeErc20GweiRule
-(
-  gwei:GweiType,
-  caller:CallerType
-): boolean{
+  (
+    gwei: GweiType,
+    caller: CallerType
+  ): boolean {
   const _reference = `NeedBeErc20GweiRule:${caller}: value is ${gwei}`
   const _regex = /^\d+$/
-  
-  if(!_regex.test(gwei))
-    throw new DataRuleError({reference:_reference})
 
-  return true;  
+  if (!_regex.test(gwei)) {
+    throw new DataRuleError({ reference: _reference })
+  } else {
+    return true;
+  }
+
 }

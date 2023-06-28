@@ -16,9 +16,10 @@ export function NeedBeATransactionHashRule
   const _reference = `NeedBeATransactionHashRule:${caller}: value is ${transactionHash}`
   const _regex = /^0x([A-Fa-f0-9]{64})$/;
 
-  if(!_regex.test(transactionHash))
+  if(!_regex.test(transactionHash)) {
     throw new DataRuleError({reference:_reference})
-
-  return true;
+  } else {
+    return true;
+  }
 
 }

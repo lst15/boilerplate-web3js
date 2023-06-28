@@ -16,8 +16,10 @@ export function NeedBeErc20MethodIdRule
   const _reference = `NeedBeErc20MethodIdRule:${caller}: value is ${methodId}`
   const _regex = /^0x[0-9a-fA-F]{8}$/
   
-  if(!_regex.test(methodId))
+  if(!_regex.test(methodId)) {
     throw new DataRuleError({reference:_reference})
-
-  return true;
+  } else {
+    return true;
+  }
+  
 }

@@ -57,9 +57,9 @@ class EthersFoundryAnvilForkModule implements FoundryAnvilForkInterface {
   public Disconnect() {
     let findProcess = execSync(
       `ps aux | grep "anvil --fork-url ${this._endpoint}--port ${this._systemPort} --silent" | egrep -v "(/bin/sh -c|grep anvil)"`
-    ).toString().replace(/  +/g, ' ');
+    ).toString().replace(/ {2}/, ' ');
 
-    const regex = new RegExp('root (.*?) ', 'g');
+    const regex = /root (.*?) /g;
     const child_pid = (regex.exec(findProcess) as Array<any>)[1];
 
     exec(`kill -9 ${child_pid}`);

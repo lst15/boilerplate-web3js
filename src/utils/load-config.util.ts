@@ -1,6 +1,5 @@
 import nconf from "nconf";
 import { InvalidFileConfigError } from "../errors/invalid-file-config-error";
-import { FileConfigNotFoundError } from "../errors/file-config-not-found-error";
 
 /**
  * Interface para a requisição de carregamento de configuração.

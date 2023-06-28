@@ -15,8 +15,10 @@ export function NeedBeAPositiveNumberRule
 ): boolean{
   const _reference = `NeedBeAPositiveNumberRule:${caller}: value is ${value}`;
 
-  if(value < 0)
+  if(value < 0) {
     throw new DataRuleError({reference:_reference});
-
+  } else {
     return true;
+  }
+  
 }

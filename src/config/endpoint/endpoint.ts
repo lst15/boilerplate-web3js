@@ -40,12 +40,7 @@ class Endpoint {
     if (!config.list) {
       throw new InvalidFileConfigError({ reference: `${this._reference}:list` });
     }
-
-    // // Verifica a existência da propriedade 'default' na configuração
-    // if (config.list.default === undefined) {
-    //   throw new InvalidFileConfigError({ reference: `${this._reference}:list:default` });
-    // }
-
+    
     const wsRegex = /^(wss?):\/\/[^\s/$.?#].[^\s]*$/;
     const httpRegex = /^(https?):\/\/[^\s/$.?#].[^\s]*$/;
 

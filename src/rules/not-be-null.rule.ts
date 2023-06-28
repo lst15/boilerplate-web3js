@@ -15,8 +15,10 @@ export function NotBeNullRule
 ): boolean{
   const _reference = `NotBeNullRule:${caller}: value is ${value}`;
 
-  if(value === undefined || value === "")
+  if(value === undefined || value === "") {
     throw new DataRuleError({reference:_reference});
-  
+  } else {
     return true;
+  }
+      
 }
