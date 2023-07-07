@@ -6,7 +6,7 @@ A response to the need to avoid code duplication across multiple web3.js project
 
 ## What does it mean?
 
-"First of all, let's go to [Wikipedia](https://en.wikipedia.org/wiki/SOLID) to understand the organizational essence."
+First of all, let's go to [Wikipedia](https://en.wikipedia.org/wiki/SOLID) to understand the organizational essence.
 
 ## Requirements
 
