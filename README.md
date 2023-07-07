@@ -1,32 +1,34 @@
 # boilerplate-web3js
 
-## Inspiração
+## Inspiration
 
-## Requisitos de Instalação
+A response to the need to avoid code duplication across multiple web3.js projects. Simplifying development and promoting module reuse for different projects.
 
-Antes de executar a aplicação, certifique-se de que você possui os seguintes requisitos instalados:
+## Requirements
 
-- Node.js versão v18.12.1
-- NPM versão v8.19.2
+Before running the application, make sure you have the following requirements installed:
 
-## Como Executar
+- Node.js version v18.12.1
+- NPM version v8.19.2
 
-Siga as etapas abaixo para executar a aplicação:
+## How to execute
 
-1. Clone este repositório em sua máquina local.
-2. Navegue até o diretório raiz do projeto.
-3. Execute o comando `npm install` ou `yarn install` para instalar as dependências.
-4. Siga as instruções em cada módulo para executar e testar individualmente.
+Follow the steps below to run the application:
 
-## Contribuição
+1. Clone this repository to your local machine.
+2. Navigate to the project's root directory.
+3. Run the command npm install or yarn install to install the dependencies.
+4. Follow the instructions in each module to run and test them individually.
 
-Contribuições são bem-vindas! Se você deseja contribuir para este projeto, siga as diretrizes abaixo:
+## Contribute
 
-1. Faça um fork deste repositório.
-2. Crie uma branch com o nome descritivo da sua contribuição.
-3. Faça as alterações e adições necessárias.
-4. Envie um pull request para revisão.
+Contributions are welcome! If you wish to contribute to this project, please follow the guidelines below:
 
-## Licença
+1. Fork this repository.
+2. Create a branch with a descriptive name for your contribution.
+3. Make the necessary changes and additions.
+4. Submit a pull request for review.
 
-Este projeto está licenciado sob a licença [MIT](LICENSE).
+## License
+
+This project is licensed under the [MIT](LICENSE).
