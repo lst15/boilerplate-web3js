@@ -4,6 +4,10 @@
 
 A response to the need to avoid code duplication across multiple web3.js projects. Simplifying development and promoting module reuse for different projects.
 
+## What does it mean?
+
+"First of all, let's go to [Wikipedia](https://en.wikipedia.org/wiki/SOLID) to understand the organizational essence."
+
 ## Requirements
 
 Before running the application, make sure you have the following requirements installed:
